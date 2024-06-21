@@ -1,3 +1,4 @@
+import { CartItem, IProduct } from "../interfaces";
 import {
   getStoredCart,
   storeCart,
@@ -16,7 +17,12 @@ describe("storage.ts tests", () => {
     });
 
     it("should return the stored cart", () => {
-      const mockCart = [{ id: 1, quantity: 2 }];
+      const mockCart: CartItem[] = [
+        {
+          product: { id: 1, name: "Product 1", amount: 10, price: 10 },
+          quantity: 2,
+        },
+      ];
       localStorage.setItem("cart", JSON.stringify(mockCart));
       expect(getStoredCart()).toEqual(mockCart);
     });
@@ -24,7 +30,12 @@ describe("storage.ts tests", () => {
 
   describe("storeCart", () => {
     it("should store the cart correctly", () => {
-      const mockCart = [{ id: 1, quantity: 2 }];
+      const mockCart: CartItem[] = [
+        {
+          product: { id: 1, name: "Product 1", amount: 10, price: 10 },
+          quantity: 2,
+        },
+      ];
       storeCart(mockCart);
       expect(localStorage.getItem("cart")).toEqual(JSON.stringify(mockCart));
     });
@@ -36,7 +47,14 @@ describe("storage.ts tests", () => {
     });
 
     it("should return the stored products", () => {
-      const mockProducts = [{ id: 1, name: "Product 1" }];
+      const mockProducts: IProduct[] = [
+        {
+          id: 1,
+          name: "Product 1",
+          amount: 10,
+          price: 10,
+        },
+      ];
       localStorage.setItem("products", JSON.stringify(mockProducts));
       expect(getStoredProducts()).toEqual(mockProducts);
     });
@@ -44,7 +62,14 @@ describe("storage.ts tests", () => {
 
   describe("storeProducts", () => {
     it("should store the products correctly", () => {
-      const mockProducts = [{ id: 1, name: "Product 1" }];
+      const mockProducts: IProduct[] = [
+        {
+          id: 1,
+          name: "Product 1",
+          amount: 10,
+          price: 10,
+        },
+      ];
       storeProducts(mockProducts);
       expect(localStorage.getItem("products")).toEqual(
         JSON.stringify(mockProducts),

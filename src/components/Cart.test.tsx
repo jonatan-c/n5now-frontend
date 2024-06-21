@@ -1,4 +1,4 @@
-import { render, fireEvent } from "@testing-library/react";
+import { fireEvent, render } from "@testing-library/react";
 import { vi } from "vitest";
 
 import { CartContext } from "../context/CartContext";
@@ -14,25 +14,32 @@ const mockClearCart = vi.fn();
 const mockAddToCart = vi.fn();
 const mockAddProduct = vi.fn();
 
-const mockContextValue = {
-  cartItems: [
-    { product: { name: "Product 1", price: 10 }, quantity: 1 },
-    { product: { name: "Product 2", price: 20 }, quantity: 2 },
-  ],
-  removeFromCart: mockRemoveFromCart,
-  incrementQuantity: mockIncrementQuantity,
-  decrementQuantity: mockDecrementQuantity,
-  purchaseCart: mockPurchaseCart,
-  clearCart: mockClearCart,
-  products: [],
-  addToCart: mockAddToCart,
-  addProduct: mockAddProduct,
-};
+const cartItems = [
+  { product: { id: 1, name: "Product 1", amount: 1, price: 10 }, quantity: 1 },
+  { product: { id: 2, name: "Product 2", amount: 1, price: 20 }, quantity: 2 },
+];
+
+const mockProducts = [
+  { id: 1, name: "Product 1", amount: 1, price: 25 },
+  { id: 2, name: "Product 2", amount: 1, price: 25 },
+];
 
 describe("Cart Component", () => {
   it("renders cart items correctly", () => {
     const screen = render(
-      <CartContext.Provider value={mockContextValue}>
+      <CartContext.Provider
+        value={{
+          cartItems: cartItems,
+          removeFromCart: mockRemoveFromCart,
+          incrementQuantity: mockIncrementQuantity,
+          decrementQuantity: mockDecrementQuantity,
+          purchaseCart: mockPurchaseCart,
+          clearCart: mockClearCart,
+          products: mockProducts,
+          addToCart: mockAddToCart,
+          addProduct: mockAddProduct,
+        }}
+      >
         <Cart closeDropdown={mockCloseDropdown} />
       </CartContext.Provider>,
     );
@@ -44,47 +51,89 @@ describe("Cart Component", () => {
 
   it("calls incrementQuantity when + button is clicked", () => {
     const screen = render(
-      <CartContext.Provider value={mockContextValue}>
+      <CartContext.Provider
+        value={{
+          cartItems: cartItems,
+          removeFromCart: mockRemoveFromCart,
+          incrementQuantity: mockIncrementQuantity,
+          decrementQuantity: mockDecrementQuantity,
+          purchaseCart: mockPurchaseCart,
+          clearCart: mockClearCart,
+          products: mockProducts,
+          addToCart: mockAddToCart,
+          addProduct: mockAddProduct,
+        }}
+      >
         <Cart closeDropdown={mockCloseDropdown} />
       </CartContext.Provider>,
     );
 
     fireEvent.click(screen.getAllByText("+")[0]);
-    expect(mockIncrementQuantity).toHaveBeenCalledWith(
-      mockContextValue.cartItems[0].product,
-    );
+    expect(mockIncrementQuantity).toHaveBeenCalledWith(cartItems[0].product);
   });
 
   it("calls decrementQuantity when - button is clicked", () => {
     const screen = render(
-      <CartContext.Provider value={mockContextValue}>
+      <CartContext.Provider
+        value={{
+          cartItems: cartItems,
+          removeFromCart: mockRemoveFromCart,
+          incrementQuantity: mockIncrementQuantity,
+          decrementQuantity: mockDecrementQuantity,
+          purchaseCart: mockPurchaseCart,
+          clearCart: mockClearCart,
+          products: mockProducts,
+          addToCart: mockAddToCart,
+          addProduct: mockAddProduct,
+        }}
+      >
         <Cart closeDropdown={mockCloseDropdown} />
       </CartContext.Provider>,
     );
 
     fireEvent.click(screen.getAllByText("-")[0]);
 
-    expect(mockDecrementQuantity).toHaveBeenCalledWith(
-      mockContextValue.cartItems[0].product,
-    );
+    expect(mockDecrementQuantity).toHaveBeenCalledWith(cartItems[0].product);
   });
 
   it("calls removeFromCart when Remove button is clicked", () => {
     const screen = render(
-      <CartContext.Provider value={mockContextValue}>
+      <CartContext.Provider
+        value={{
+          cartItems: cartItems,
+          removeFromCart: mockRemoveFromCart,
+          incrementQuantity: mockIncrementQuantity,
+          decrementQuantity: mockDecrementQuantity,
+          purchaseCart: mockPurchaseCart,
+          clearCart: mockClearCart,
+          products: mockProducts,
+          addToCart: mockAddToCart,
+          addProduct: mockAddProduct,
+        }}
+      >
         <Cart closeDropdown={mockCloseDropdown} />
       </CartContext.Provider>,
     );
 
     fireEvent.click(screen.getAllByText("Remove")[0]);
-    expect(mockRemoveFromCart).toHaveBeenCalledWith(
-      mockContextValue.cartItems[0].product,
-    );
+    expect(mockRemoveFromCart).toHaveBeenCalledWith(cartItems[0].product);
   });
 
   it("calls purchaseCart when Purchase button is clicked", () => {
     const screen = render(
-      <CartContext.Provider value={mockContextValue}>
+      <CartContext.Provider
+        value={{
+          cartItems: cartItems,
+          removeFromCart: mockRemoveFromCart,
+          incrementQuantity: mockIncrementQuantity,
+          decrementQuantity: mockDecrementQuantity,
+          purchaseCart: mockPurchaseCart,
+          clearCart: mockClearCart,
+          products: mockProducts,
+          addToCart: mockAddToCart,
+          addProduct: mockAddProduct,
+        }}
+      >
         <Cart closeDropdown={mockCloseDropdown} />
       </CartContext.Provider>,
     );
@@ -95,7 +144,19 @@ describe("Cart Component", () => {
 
   it("calls clearCart when Clear button is clicked", () => {
     const screen = render(
-      <CartContext.Provider value={mockContextValue}>
+      <CartContext.Provider
+        value={{
+          cartItems: cartItems,
+          removeFromCart: mockRemoveFromCart,
+          incrementQuantity: mockIncrementQuantity,
+          decrementQuantity: mockDecrementQuantity,
+          purchaseCart: mockPurchaseCart,
+          clearCart: mockClearCart,
+          products: mockProducts,
+          addToCart: mockAddToCart,
+          addProduct: mockAddProduct,
+        }}
+      >
         <Cart closeDropdown={mockCloseDropdown} />
       </CartContext.Provider>,
     );
