@@ -1,37 +1,48 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-import reactLogo from "./assets/react.svg";
+import Navbar from "./components/Navbar";
+import { CartProvider } from "./context/CartContext";
 
-import viteLogo from "/vite.svg";
-import "./App.css";
+import "./App.scss";
 
-function App() {
-  const [count, setCount] = useState(0);
+import AddProductPage from "./pages/AddProductPage";
+import NotFoundPage from "./pages/NotFoundPage";
+import ProductPage from "./pages/ProductPage";
+import { ErrorBoundary } from "./utils/ErrorBoundaries";
+import FallbackComponent from "./components/FallbackComponent";
+
+const App: React.FC = () => {
+  const [theme, setTheme] = useState<"light" | "dark">(() => {
+    const storedTheme = localStorage.getItem("theme");
+    return storedTheme === "dark" ? "dark" : "light";
+  });
+
+  const toggleTheme = () => {
+    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+  };
+
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
+  }, [theme]);
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <ErrorBoundary fallBackComponent={<FallbackComponent />}>
+      <CartProvider>
+        <div className={`app ${theme}`}>
+          <Router>
+            <Navbar toggleTheme={toggleTheme} theme={theme} />
+
+            <Routes>
+              <Route path="/" element={<ProductPage />} />
+              <Route path="/add-product" element={<AddProductPage />} />
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+          </Router>
+        </div>
+      </CartProvider>
+    </ErrorBoundary>
   );
-}
+};
 
 export default App;

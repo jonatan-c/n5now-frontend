@@ -1,0 +1,136 @@
+@import "../src/assets/styles/_variables";
+@import "../src/assets/styles/styles.scss";
+
+button {
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.clear-button {
+  background-color: $btn-danger;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+input[type="number"] {
+  width: 60px;
+  height: 20px;
+  margin-right: 10px;
+  border-radius: 4px;
+}
+input[type="text"] {
+  width: 60px;
+  height: 20px;
+  margin-right: 10px;
+  border-radius: 4px;
+}
+
+.app {
+  height: 100vh;
+
+  &.light {
+    background-color: $light;
+    color: $dark;
+    .text {
+      color: $dark;
+    }
+
+    .product-card {
+      background-color: $light;
+    }
+    .add-product-form {
+      background-color: $light;
+    }
+    .cart-item {
+      background-color: $light;
+    }
+    .cart-dropdown {
+      background-color: $light;
+    }
+    p,
+    h1,
+    h2,
+    h3 {
+      color: $dark;
+    }
+
+    input {
+      color: $dark;
+    }
+
+    input[type="number"] {
+      background-color: $light;
+      color: $dark;
+      border: 1px solid $dark;
+    }
+    input[type="text"] {
+      background-color: $light;
+      color: $dark;
+      border: 1px solid $dark;
+    }
+    .product-card button,
+    .cart-item button,
+    .purchase-button,
+    .add-product-form button {
+      background-color: #97a3af;
+      color: #080808;
+      border: none;
+    }
+    .fallback-container {
+      background-color: $light;
+      color: $dark;
+    }
+  }
+
+  &.dark {
+    background-color: $dark;
+    color: $light;
+    .text {
+      color: $light;
+    }
+
+    .product-card {
+      background-color: $dark;
+    }
+    .add-product-form {
+      background-color: $dark;
+    }
+    .cart-item {
+      background-color: $dark;
+    }
+    .cart-dropdown {
+      background-color: $dark;
+    }
+    p,
+    h1,
+    h2,
+    h3 {
+      color: $light;
+    }
+    input {
+      color: $light;
+    }
+
+    input[type="number"] {
+      background-color: $dark;
+      color: $light;
+      border: 1px solid $light;
+    }
+
+    input[type="text"] {
+      background-color: $dark;
+      color: $light;
+      border: 1px solid $light;
+    }
+    .fallback-container {
+      background-color: $dark;
+      color: $light;
+    }
+  }
+}

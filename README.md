@@ -1,30 +1,53 @@
-# React + TypeScript + Vite
+# Challenge
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Descripción
+Este proyecto consiste en una aplicación desarrollada con React para simular unas funciones de compra con carrito de un ecoomerce. La aplicacion utiliza el local storage para poder persistir la data.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tecnologías Utilizadas y Practicas de Desarrollo
 
-## Expanding the ESLint configuration
+- **Frontend**:  React Typescript
+- **Pruebas Unitarias**: Vitest, React Testing Library
+- **Estilos**: SASS
+- **Linters**: Eslint, Prettier, Husky , Conventional Commits , para simular un flujo de trabajo real en un trabajo en equipo.
+- **React Hook Form**: Para manejar los formularios de la aplicacion
+- **React Router Dom**: Para manejar las rutas de la aplicacion
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Instalación
 
-- Configure the top-level `parserOptions` property like this:
+Para ejecutar este proyecto en tu entorno local, sigue estos pasos:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+1. Cloná el repositorio:
+   ```sh
+   git clone <repo>
+   ```
+2. Navegá al directorio del proyecto:
+   ```sh
+   cd name-repo
+   ```
+3. Ejecuta el comando para instalar las dependencias:
+   ```sh
+    npm install
+   ```
+4. Inicia la aplicación:
+   ```sh
+    npm start
+    ```
+
+5. Para ejecutar los tests unitarios:
+   ```sh
+    npm test
+    ```
+    
+
+# Challenge
+
+## Description
+
+Test de logica resuelto en el file ejecicio.js
+
+## Ejecucion
+
+```sh
+node ejercicio.js
 ```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
