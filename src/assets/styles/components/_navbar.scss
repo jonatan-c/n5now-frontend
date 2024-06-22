@@ -52,6 +52,7 @@
     padding: 8px 12px;
     border-radius: 4px;
     cursor: pointer;
+    margin-top: 10px;
   }
 }
 
@@ -59,10 +60,9 @@
   .navbar {
     flex-direction: row;
     align-items: flex-start;
-    cursor: pointer;
     .options-dropdown {
       position: absolute;
-      right: 130px;
+      right: 110px;
       top: 50px;
       width: 200px;
       background: white;
