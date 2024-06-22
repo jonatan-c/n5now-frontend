@@ -44,7 +44,10 @@ export default function Navbar({ toggleTheme, theme }: NavbarProps) {
 
       {isMobile && (
         <>
-          <div style={{ color: "white" }} onClick={toggleOptionsDropdown}>
+          <div
+            style={{ color: "white", cursor: "pointer" }}
+            onClick={toggleOptionsDropdown}
+          >
             ☰
           </div>
           {optionsDropdownIsOpen && (
