@@ -1,4 +1,4 @@
-# Challenge
+# A ) Challenge
 
 ## Descripción
 Este proyecto consiste en una aplicación desarrollada con React para simular unas funciones de compra con carrito de un ecoomerce. La aplicacion utiliza el local storage para poder persistir la data.
@@ -36,13 +36,16 @@ Para ejecutar este proyecto en tu entorno local, sigue estos pasos:
 
 5. Para ejecutar los tests unitarios:
    ```sh
-    npm test
+    npm run test
     ```
     
+## Demo
 
-# Challenge
+Puedes ver una demo de la aplicación en el siguiente link: [Demo](https://n5now-frontend.vercel.app/)
 
-## Description
+# B ) Test Logico
+
+## Descripción
 
 Test de logica resuelto en el file ejecicio.js
 
